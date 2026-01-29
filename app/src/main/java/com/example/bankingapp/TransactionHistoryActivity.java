@@ -21,6 +21,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transaction_history);
 
         // ID must match XML
+        //ID must match in xml
         recyclerView = findViewById(R.id.rvTransactions);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
