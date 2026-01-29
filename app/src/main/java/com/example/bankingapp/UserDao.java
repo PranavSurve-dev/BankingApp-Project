@@ -26,6 +26,10 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1")  // ✅ fixed
     User getUserByEmailAndPassword(String email, String password);
 
+    @Query("SELECT * FROM transactions WHERE fromEmail = :email OR toEmail = :email ORDER BY timestamp DESC")
+    List<Transaction> getUserTransactions(String email);
+
+
     // Update existing user
     @Update
     void updateUser(User user);

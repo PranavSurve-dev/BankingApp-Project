@@ -22,7 +22,24 @@ public class TransactionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(public class TransactionActivity extends AppCompatActivity {
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_dashboard);
+
+                Button transferBtn = findViewById(R.id.transferBtn);
+
+                transferBtn.setOnClickListener(v -> {
+                    startActivity(new Intent(
+                            TransactionActivity.this,
+                            TransactionHistoryActivity.class
+                    ));
+                });
+            }
+        }
+);
         setContentView(R.layout.activity_transaction);
 
         noTransactionsText = findViewById(R.id.noTransactionsText);

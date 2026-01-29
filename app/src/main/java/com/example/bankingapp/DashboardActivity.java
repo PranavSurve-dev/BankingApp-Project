@@ -19,7 +19,15 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(Button transferBtn = findViewById(R.id.transferBtn);
+
+        transferBtn.setOnClickListener(v -> {
+            startActivity(new Intent(
+                    DashboardActivity.this,
+                    TransactionHistoryActivity.class
+            ));
+        });
+);
         setContentView(R.layout.activity_dashboard);
 
         // Initialize Room Database
