@@ -20,6 +20,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_history);
 
+
         recyclerView = findViewById(R.id.rvTransactions);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
