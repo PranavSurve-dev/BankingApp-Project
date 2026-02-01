@@ -37,4 +37,5 @@ public class TransactionHistoryActivity extends AppCompatActivity {
         adapter = new TransactionAdapter(transactionList, "user1@gmail.com");
         recyclerView.setAdapter(adapter);
     }
+
 }
