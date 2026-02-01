@@ -13,39 +13,36 @@ import androidx.room.Room;
 public class DashboardActivity extends AppCompatActivity {
 
     private TextView welcomeText, balanceText;
-    private Button transferBtn, logoutBtn;
+    private Button transferBtn, logoutBtn, historyBtn;
     private AppDatabase db;
     private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(Button transferBtn = findViewById(R.id.transferBtn);
+        super.onCreate(savedInstanceState);
 
-        transferBtn.setOnClickListener(v -> {
-            startActivity(new Intent(
-                    DashboardActivity.this,
-                    TransactionHistoryActivity.class
-            ));
-        });
-);
+        // MUST be first after super
         setContentView(R.layout.activity_dashboard);
 
         // Initialize Room Database
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "banking_db")
-                .allowMainThreadQueries()
-                .build();
+        db = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                "banking_db"
+        ).allowMainThreadQueries().build();
 
-        // Bind Views
+        // Bind Views (IDs must exist in XML)
         welcomeText = findViewById(R.id.welcomeText);
         balanceText = findViewById(R.id.balanceText);
         transferBtn = findViewById(R.id.transferBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
+        historyBtn = findViewById(R.id.historyBtn); // optional button
 
         // Get email from Intent
         email = getIntent().getStringExtra("email");
         Log.d("DashboardActivity", "Received email: " + email);
 
-        // Check if email is valid
+        // Validate session
         if (email == null || email.isEmpty()) {
             Toast.makeText(this, "Session expired. Please login again.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
@@ -53,25 +50,33 @@ public class DashboardActivity extends AppCompatActivity {
             return;
         }
 
-        // Fetch user data from database
+        // Fetch user data
         User user = db.userDao().getUserByEmail(email);
         if (user != null) {
             welcomeText.setText("Welcome, " + user.getName());
-            balanceText.setText(String.format("Balance: ₹%.2f", user.getBalance()));
+            balanceText.setText("Balance: ₹" + user.getBalance());
         } else {
             Toast.makeText(this, "User not found. Please login again.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+            return;
         }
 
-        // Transfer Button Action
+        // Transfer button
         transferBtn.setOnClickListener(v -> {
             Intent i = new Intent(DashboardActivity.this, TransferActivity.class);
             i.putExtra("email", email);
             startActivity(i);
         });
 
-        // Logout Button Action
+        // Transaction history button
+        historyBtn.setOnClickListener(v -> {
+            Intent i = new Intent(DashboardActivity.this, TransactionHistoryActivity.class);
+            i.putExtra("email", email);
+            startActivity(i);
+        });
+
+        // Logout button
         logoutBtn.setOnClickListener(v -> {
             startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
             finish();
