@@ -1,36 +1,57 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:padding="12dp">-->
+
+<!--    &lt;!&ndash; Header / Title &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Transaction History"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginBottom="12dp" />-->
+
+<!--    &lt;!&ndash; Empty state message (hidden by default) &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvEmpty"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="No transactions found."-->
+<!--        android:gravity="center"-->
+<!--        android:visibility="gone"-->
+<!--        android:textSize="16sp"-->
+<!--        android:padding="16dp" />-->
+
+<!--    &lt;!&ndash; RecyclerView for transactions &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvTransactions"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1" />-->
+
+<!--</LinearLayout>-->
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- Header / Title -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Transaction History"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Empty state message (hidden by default) -->
-    <TextView
-        android:id="@+id/tvEmpty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No transactions found."
-        android:gravity="center"
-        android:visibility="gone"
-        android:textSize="16sp"
-        android:padding="16dp" />
-
-    <!-- RecyclerView for transactions -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTransactions"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"/>
 
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Transactions Found"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 </LinearLayout>
